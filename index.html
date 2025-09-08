@@ -5,187 +5,176 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Be Eternal — Home</title>
   <meta name="description" content="Be Eternal — premium SEO, content & growth services. Single-file homepage ready for GitHub & Vercel." />
+
+  <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================
+    /* ----------------------------
        Design tokens (triple-checked)
-       ========================= */
+       ---------------------------- */
     :root{
-      --page-bg: #fbfdff;         /* Very light white shade for page background */
-      --card-bg: #ffffff;         /* panels remain white */
+      --page-bg: #fbfdff;            /* very light page background */
+      --panel-bg: #ffffff;          /* cards / panels background (white) */
       --muted: #6e7f93;
-      --text: #102433;
-      --brand-color: #24377A;     /* default from logo (accent only) */
-      --brand-alt: #FFC857;      /* alternate accent (toggle) */
+      --text: #0e2230;
+      --brand: #24377A;             /* default brand accent — from your logo (ACCENT ONLY) */
+      --brand-alt: #FFC857;         /* alternate accent (Gold) */
+      --accent: var(--brand);       /* active accent variable */
       --radius: 14px;
       --glass-blur: 8px;
       --maxw: 1200px;
-      --soft-shadow: 0 12px 30px rgba(8,18,32,0.06);
-      --accent-weak: rgba(36,55,122,0.06); /* subtle hover tint */
+      --soft-shadow: 0 14px 36px rgba(14,34,48,0.06);
+      --hover-tint: rgba(36,55,122,0.06); /* subtle hover tint (brand used lightly) */
       --focus-ring: rgba(36,55,122,0.14);
     }
 
-    /* =========================
-       Base reset & typography
-       ========================= */
-    * { box-sizing: border-box; }
-    html,body { height:100%; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    /* ----------------------------
+       Base reset & layout
+       ---------------------------- */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       background: var(--page-bg);
-      color: var(--text);
+      color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
     }
-    a { color:inherit; text-decoration:none; }
-    img { max-width:100%; display:block; }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--maxw); margin:0 auto; padding:0 20px}
 
-    .container { max-width:var(--maxw); margin:0 auto; padding:0 20px; }
-
-    /* =========================
-       Header / Navigation
-       ========================= */
-    header { position: sticky; top: 12px; z-index: 90; }
-    .nav {
-      margin:14px 20px; padding:10px 16px; border-radius:12px; display:flex; align-items:center;
-      justify-content:space-between; gap:12px;
-      background: rgba(255,255,255,0.85); border:1px solid rgba(8,18,32,0.04); box-shadow: var(--soft-shadow);
+    /* ----------------------------
+       Header
+       ---------------------------- */
+    header{position:sticky; top:12px; z-index:90}
+    .nav{
+      margin:14px 20px; padding:10px 14px; border-radius:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      background: rgba(255,255,255,0.95);
+      border:1px solid rgba(10,22,34,0.04);
+      box-shadow:var(--soft-shadow);
       backdrop-filter: blur(var(--glass-blur));
     }
-    .brand { display:flex; gap:12px; align-items:center; }
-    .logo-box { width:52px; height:52px; border-radius:10px; overflow:hidden; display:grid; place-items:center; background: #fff; box-shadow: 0 8px 18px rgba(8,18,32,0.04); }
-    .brand-title { font-family:Poppins, Inter; font-weight:700; font-size:16px; }
-    nav ul { display:flex; gap:18px; list-style:none; margin:0; padding:0; align-items:center; }
-    nav a { padding:6px 8px; border-radius:8px; font-weight:600; color:var(--text); font-size:14px; }
-    nav a:hover { background: var(--accent-weak); color: var(--brand-color); }
+    .brand{display:flex; gap:12px; align-items:center}
+    .logo-box{width:52px; height:52px; border-radius:10px; overflow:hidden; display:grid; place-items:center; background:#fff; box-shadow:0 8px 18px rgba(10,22,34,0.04)}
+    .brand-title{font-family:Poppins, Inter; font-weight:700; font-size:16px}
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0; align-items:center}
+    nav a{padding:6px 8px; border-radius:8px; font-weight:600; font-size:14px; color:var(--text)}
+    nav a:hover{background:var(--hover-tint); color:var(--accent)}
 
-    .nav-actions { display:flex; gap:10px; align-items:center; }
-    .btn-ghost { background:transparent; border:1px solid rgba(8,18,32,0.04); padding:8px 12px; border-radius:8px; color:var(--muted); cursor:pointer; }
-    .btn-primary {
-      background: #fff; /* preserve white background */
-      color: var(--brand-color); /* brand used only as text/border */
-      border: 2px solid var(--brand-color);
+    .nav-actions{display:flex; gap:10px; align-items:center}
+    .btn-ghost{background:transparent; border:1px solid rgba(10,22,34,0.04); padding:8px 12px; border-radius:8px; color:var(--muted); cursor:pointer}
+    .btn-outline {
+      background: var(--panel-bg);
+      color: var(--accent);
+      border: 2px solid var(--accent);
       padding:9px 14px; border-radius:8px; font-weight:700; cursor:pointer;
-      transition: transform .22s ease, box-shadow .22s ease;
+      transition: transform .22s, box-shadow .22s;
     }
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(36,55,122,0.06);
-    }
-    .menu-toggle { display:none; background:transparent; border:1px solid rgba(8,18,32,0.04); padding:8px; border-radius:8px; cursor:pointer; }
+    .btn-outline:hover{ transform: translateY(-4px); box-shadow: 0 10px 30px rgba(36,55,122,0.06) }
 
-    /* =========================
-       HERO: split layout
-       ========================= */
-    .hero { display:grid; grid-template-columns: 1fr 480px; gap:36px; align-items:center; padding:72px 0 48px; min-height:74vh; }
-    .hero-left h1 { margin:0; font-family:Poppins, Inter; font-size:44px; line-height:1.02; font-weight:800; }
-    .hero-left p { color:var(--muted); max-width:62ch; margin-top:12px; font-size:16px; }
-    .hero-actions { margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .menu-toggle{display:none; background:transparent; border:1px solid rgba(10,22,34,0.04); padding:8px; border-radius:8px; cursor:pointer}
 
-    /* accent underline (uses brand color but only on text) */
-    .accent-underline {
-      display:inline-block; position:relative; padding-bottom:6px;
-    }
-    .accent-underline::after {
-      content:''; position:absolute; left:0; right:0; height:6px; bottom:0; border-radius:6px;
+    /* ----------------------------
+       Hero: split layout w/ right visual
+       ---------------------------- */
+    .hero{ display:grid; grid-template-columns: 1fr 480px; gap:36px; align-items:center; padding:72px 0 40px; min-height:74vh; }
+    .hero-left h1{ margin:0; font-family:Poppins, Inter; font-size:44px; line-height:1.02; font-weight:800; }
+    .hero-left p{ color:var(--muted); max-width:62ch; margin-top:12px; font-size:16px }
+    .hero-actions{ margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; align-items:center }
+
+    /* accent underline (uses accent, not background) */
+    .accent-text{ position:relative; display:inline-block }
+    .accent-text::after{
+      content:''; position:absolute; left:0; right:0; bottom:0; height:8px; border-radius:6px;
       background: linear-gradient(90deg, rgba(36,55,122,0.14), rgba(36,55,122,0.06));
-      transform-origin:left center; transform: scaleX(0.8);
-      opacity:0.9;
+      pointer-events:none;
+      transform-origin:left center; transform:scaleX(.92);
     }
 
-    /* hero card (right column) stays white, brand used only inside as accents */
-    .hero-card {
-      background: var(--card-bg); border-radius:12px; padding:18px; border:1px solid rgba(8,18,32,0.04);
-      box-shadow: 0 20px 44px rgba(8,18,32,0.04);
+    /* right panel */
+    .hero-card{
+      background:var(--panel-bg); border-radius:12px; padding:18px; border:1px solid rgba(10,22,34,0.04);
+      box-shadow:var(--soft-shadow); color:var(--text);
     }
-    .hero-visual {
-      height:240px; border-radius:10px; background: linear-gradient(180deg,#fff,#fbfdff); display:flex; align-items:center; justify-content:center; color:var(--muted);
-      border: 1px solid rgba(8,18,32,0.02); overflow:hidden;
-    }
+    .hero-visual{ height:240px; border-radius:10px; background: linear-gradient(180deg,#fff,#fbfdff); display:flex; align-items:center; justify-content:center; color:var(--muted); border:1px solid rgba(10,22,34,0.02); overflow:hidden }
 
-    /* tiles 3D effect */
-    .tiles { display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; margin-top:12px; }
-    .tile {
-      background:#fff; border-radius:10px; padding:12px; border:1px solid rgba(8,18,32,0.02);
-      transition: transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s;
-      transform-style:preserve-3d; cursor:default;
-    }
-    .tile:hover { transform: translateY(-10px) rotateX(3deg); box-shadow: 0 22px 46px rgba(8,18,32,0.06); }
-    .tile .ico { font-size:18px; color:var(--brand-color); margin-bottom:8px; }
-    .tile h4 { margin:0; color:var(--text); }
-    .tile p { margin:6px 0 0; color:var(--muted); font-size:13px; }
+    /* tiles 3D */
+    .tiles{ display:grid; grid-template-columns: repeat(2,1fr); gap:10px; margin-top:12px; }
+    .tile{ background:#fff; border-radius:10px; padding:12px; border:1px solid rgba(10,22,34,0.02); transition: transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .36s; transform-style:preserve-3d; cursor:default }
+    .tile:hover{ transform: translateY(-10px) rotateX(3deg); box-shadow: 0 22px 46px rgba(10,22,34,0.06) }
+    .tile .ico{ font-size:18px; color:var(--accent); margin-bottom:8px }
+    .tile h4{ margin:0; color:var(--text) }
+    .tile p{ margin:6px 0 0; color:var(--muted); font-size:13px }
 
-    /* floating accent shapes (effects only) */
-    .accent-shape { position:absolute; border-radius:50%; pointer-events:none; filter: blur(10px); opacity:0.14; }
-    .shape-1 { width:260px; height:260px; left:6%; top:6%; background: var(--brand-color); }
-    .shape-2 { width:160px; height:160px; right:6%; bottom:10%; background: var(--brand-color); opacity:0.08; }
+    /* accent decorative shapes (brand tinted, effect-only) */
+    .accent-shape{ position:absolute; border-radius:50%; pointer-events:none; filter: blur(12px); opacity:0.12; transform:translateZ(0) }
+    .shape-1{ width:260px; height:260px; left:5%; top:6%; background:var(--accent) }
+    .shape-2{ width:160px; height:160px; right:6%; bottom:10%; background:var(--accent); opacity:0.08 }
 
-    /* =========================
-       Services grid
-       ========================= */
-    .services { margin-top:34px; display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
-    .service-card {
-      background: #fff; padding:18px; border-radius:10px; border:1px solid rgba(8,18,32,0.03); transition: transform .32s, box-shadow .32s;
-      cursor:default;
-    }
-    .service-card:hover { transform: translateY(-10px); box-shadow: 0 26px 60px rgba(8,18,32,0.06); }
-    .service-card h3 { color:var(--brand-color); margin-bottom:8px; }
-    .service-card p { color:var(--muted); margin:0; }
+    /* ----------------------------
+       Services / info cards
+       ---------------------------- */
+    .services{ margin-top:34px; display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:18px }
+    .service-card{ background:var(--panel-bg); padding:18px; border-radius:12px; border:1px solid rgba(10,22,34,0.03); transition: transform .32s, box-shadow .32s; cursor:default }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 26px 60px rgba(10,22,34,0.06) }
+    .service-card h3 { color:var(--accent); margin-bottom:8px }
+    .service-card p { color:var(--muted); margin:0 }
 
-    /* =========================
+    /* ----------------------------
        KPI counters
-       ========================= */
-    .kpi-row { margin-top:32px; display:flex; gap:18px; flex-wrap:wrap; }
-    .kpi {
-      min-width:180px; background:#fff; border-radius:10px; padding:14px; border:1px solid rgba(8,18,32,0.02);
-      box-shadow: 0 12px 30px rgba(8,18,32,0.04); text-align:center;
-    }
-    .kpi .num { font-size:28px; font-weight:800; color:var(--brand-color); }
-    .kpi .label { color:var(--muted); font-size:13px; margin-top:6px; }
+       ---------------------------- */
+    .kpi-row{ margin-top:32px; display:flex; gap:14px; flex-wrap:wrap; align-items:stretch }
+    .kpi{ min-width:160px; background:var(--panel-bg); padding:14px; border-radius:10px; border:1px solid rgba(10,22,34,0.02); box-shadow:0 12px 30px rgba(10,22,34,0.03); text-align:center }
+    .kpi .num{ font-size:28px; font-weight:800; color:var(--accent) }
+    .kpi .lbl{ color:var(--muted); font-size:13px; margin-top:6px }
 
     /* testimonials */
-    .testimonials { margin-top:36px; display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
-    .testi { background:#fff; padding:16px; border-radius:10px; border:1px solid rgba(8,18,32,0.03); color:var(--text); }
-    .testi p { color:var(--muted); margin-bottom:10px; }
-    .testi .who { font-weight:700; color:var(--text); }
+    .testimonials{ margin-top:36px; display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:14px }
+    .testi{ background:var(--panel-bg); padding:16px; border-radius:12px; border:1px solid rgba(10,22,34,0.03); color:var(--text) }
+    .testi p{ color:var(--muted); margin-bottom:10px }
+    .testi .name{ font-weight:700; color:var(--text) }
 
     /* CTA */
-    .cta { margin-top:40px; background:#fff; padding:20px; border-radius:10px; border:1px solid rgba(8,18,32,0.03); display:flex; gap:12px; align-items:center; justify-content:space-between; box-shadow: 0 16px 40px rgba(8,18,32,0.04); }
-    .cta .left h3 { margin:0; color:var(--text); }
-    .cta .left p { margin:6px 0 0; color:var(--muted); }
-    .cta .actions { display:flex; gap:10px; align-items:center; }
+    .cta{ margin-top:40px; background:var(--panel-bg); padding:22px; border-radius:12px; border:1px solid rgba(10,22,34,0.03); display:flex; gap:18px; align-items:center; justify-content:space-between; box-shadow:var(--soft-shadow) }
+    .cta .left h3{ margin:0; color:var(--text) }
+    .cta .left p{ margin:6px 0 0; color:var(--muted) }
+    .cta .actions{ display:flex; gap:10px; align-items:center }
 
-    /* reveal */
-    .reveal { opacity:0; transform: translateY(10px); transition: all .6s cubic-bezier(.2,.9,.3,1); }
-    .reveal.in-view { opacity:1; transform:none; }
+    /* reveal & animation helpers */
+    .reveal{ opacity:0; transform:translateY(12px); transition: all .6s cubic-bezier(.2,.9,.3,1) }
+    .reveal.in-view{ opacity:1; transform:none }
 
     /* focus */
-    button:focus, a:focus { outline: 3px solid var(--focus-ring); outline-offset:3px; border-radius:8px; }
+    button:focus, a:focus { outline: 3px solid var(--focus-ring); outline-offset:3px; border-radius:8px }
 
     /* responsive */
-    @media (max-width: 960px) {
-      .hero { grid-template-columns: 1fr 360px; gap:22px; padding:56px 0 40px; }
-    }
-    @media (max-width: 720px) {
-      nav ul { display:none; }
-      .menu-toggle { display:inline-block; }
-      .hero { grid-template-columns:1fr; padding:36px 0; gap:18px; }
-      .hero-card { order:2; }
-      .shape-1, .shape-2 { display:none; }
-      .cta { flex-direction:column; text-align:center; }
+    @media (max-width:980px){ .hero{ grid-template-columns: 1fr 360px; gap:20px } }
+    @media (max-width:720px){
+      nav ul{ display:none }
+      .menu-toggle{ display:inline-block }
+      .hero{ grid-template-columns: 1fr; padding:36px 0; gap:18px }
+      .hero-card{ order:2 }
+      .accent-shape{ display:none }
+      .cta{ flex-direction:column; text-align:center }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+  <!--
+    Save logo at: assets/logo.png (relative to this index.html)
+    Single-file, no external JS libs. Deploy to Git/Vercel as-is.
+  -->
+
+  <!-- HEADER -->
   <header>
     <div class="nav container" role="navigation" aria-label="Main navigation">
       <div class="brand">
         <div class="logo-box" aria-hidden="true">
-          <!-- Put your logo file at assets/logo.png -->
           <img src="assets/logo.png" alt="Be Eternal logo" style="width:100%;height:100%;object-fit:cover">
         </div>
         <div>
@@ -198,9 +187,8 @@
         <ul>
           <li><a href="#" aria-current="page">Home</a></li>
           <li><a href="#">About</a></li>
-          <li class="dropdown">
-            <a href="#" aria-haspopup="true">Services ▾</a>
-            <div class="dropdown-menu" role="menu" style="display:none;">
+          <li class="dropdown"><a href="#" aria-haspopup="true">Services ▾</a>
+            <div class="dropdown-menu" role="menu" style="display:none">
               <a href="#">SEO</a>
               <a href="#">Content</a>
               <a href="#">Design</a>
@@ -213,57 +201,63 @@
 
       <div class="nav-actions">
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
-        <button class="btn-ghost" id="signInBtn">Sign in</button>
-        <button class="btn-primary" id="inviteBtn">Get a quote</button>
-        <button class="btn-ghost" id="brandToggle" aria-pressed="false" title="Toggle accent color" style="margin-left:6px;">Accent: Navy</button>
+        <button class="btn-ghost" id="signinBtn">Sign in</button>
+        <button class="btn-outline" id="requestQuote">Request quote</button>
+        <button class="btn-ghost" id="accentToggle" aria-pressed="false" title="Toggle accent color">Accent: Navy</button>
       </div>
     </div>
   </header>
 
-  <main class="container" role="main" style="padding-bottom:48px;">
-    <!-- hero -->
+  <!-- MAIN -->
+  <main class="container" role="main" style="padding-bottom:56px;">
+
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-left">
-        <h1 class="reveal">Be Eternal — <span class="accent-underline">Growth that lasts</span></h1>
-        <p class="reveal">We design measurable SEO, strategic content and high-ROI digital programs. This homepage uses your brand color only as accents and effects — background stays premium white.</p>
+      <div>
+        <h1 class="reveal">Be Eternal — <span class="accent-text">Growth that lasts</span></h1>
+        <p class="reveal">We build measurable SEO, content systems and growth programs that scale revenue. This homepage uses your brand color only for accents, interactions, borders and glows — background remains light.</p>
 
         <div class="hero-actions reveal">
-          <button class="btn-primary" id="exploreBtn">Explore services</button>
-          <button class="btn-ghost" id="talkBtn">Talk to sales</button>
+          <button class="btn-outline" id="explore">Explore services</button>
+          <button class="btn-ghost" id="talk">Talk to sales</button>
         </div>
 
         <!-- KPI row -->
-        <div class="kpi-row reveal" style="margin-top:26px;">
+        <div class="kpi-row reveal" style="margin-top:22px">
           <div class="kpi">
             <div class="num" data-target="120">0</div>
-            <div class="label">Projects completed</div>
+            <div class="lbl">Projects completed</div>
           </div>
           <div class="kpi">
             <div class="num" data-target="72">0</div>
-            <div class="label">Avg. uplift (%)</div>
+            <div class="lbl">Avg. uplift (%)</div>
           </div>
           <div class="kpi">
             <div class="num" data-target="94">0</div>
-            <div class="label">Client retention (%)</div>
+            <div class="lbl">Client retention (%)</div>
           </div>
         </div>
       </div>
 
+      <!-- RIGHT PANEL -->
       <aside class="hero-card reveal" aria-hidden="false">
         <div class="hero-visual" aria-hidden="true">
-          <!-- placeholder illustration -->
-          <svg width="300" height="170" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="0" y="0" width="600" height="340" rx="12" fill="#fff"/>
-            <g transform="translate(36,28)" fill="none" stroke="#eef6fb" stroke-width="1.2">
-              <path d="M20 220 Q160 60 300 220 T580 220"/>
+          <!-- decorative mock dashboard (SVG) -->
+          <svg width="320" height="160" viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="640" height="320" rx="12" fill="#fff"/>
+            <g transform="translate(36,34)" fill="none" stroke="#eef6fb" stroke-width="1.2">
+              <path d="M20 220 Q140 100 260 220 T540 220"/>
+            </g>
+            <g transform="translate(40,44)">
+              <rect x="0" y="0" width="220" height="110" rx="10" fill="#f8fafc" stroke="#eef3f6"/>
             </g>
           </svg>
         </div>
 
-        <div style="margin-top:12px; display:flex; gap:14px; align-items:flex-start;">
+        <div style="margin-top:12px; display:flex; gap:12px; align-items:flex-start;">
           <div style="flex:1;">
             <div style="font-weight:700; color:var(--text)">Quick Services</div>
-            <div style="color:var(--muted); font-size:13px; margin-top:6px">SEO audit • Content • Paid media</div>
+            <div style="color:var(--muted); font-size:13px; margin-top:6px">SEO audits • Content • Paid media</div>
           </div>
 
           <div style="width:110px;">
@@ -291,7 +285,6 @@
             </div>
           </div>
         </div>
-
       </aside>
     </section>
 
@@ -299,13 +292,13 @@
     <div class="accent-shape shape-1" aria-hidden="true"></div>
     <div class="accent-shape shape-2" aria-hidden="true"></div>
 
-    <!-- services -->
-    <section class="services reveal" aria-labelledby="services">
-      <h2 id="services" style="margin-bottom:10px;">Core Services</h2>
+    <!-- SERVICES -->
+    <section class="services reveal" aria-labelledby="services-title" style="margin-top:28px">
+      <h2 id="services-title" style="margin-bottom:10px">Core Services</h2>
 
       <div class="service-card tilt reveal">
         <h3>Technical SEO</h3>
-        <p>Improve crawlability, speed and indexability with a clear roadmap.</p>
+        <p>Improve crawlability, site speed and indexability for sustainable growth.</p>
       </div>
 
       <div class="service-card tilt reveal">
@@ -315,79 +308,76 @@
 
       <div class="service-card tilt reveal">
         <h3>Content Production</h3>
-        <p>Long-form articles, eBooks, email sequences and social bundles.</p>
+        <p>Long-form articles, eBooks, email sequences and social assets.</p>
       </div>
 
       <div class="service-card tilt reveal">
         <h3>Paid & Growth</h3>
-        <p>Targeted campaigns to scale revenue while reducing CAC.</p>
+        <p>Targeted campaigns to scale customer acquisition and revenue.</p>
       </div>
     </section>
 
-    <!-- testimonials -->
-    <section class="testimonials reveal" aria-label="Testimonials" style="margin-top:28px;">
+    <!-- TESTIMONIALS -->
+    <section class="testimonials reveal" aria-label="Testimonials" style="margin-top:28px">
       <div class="testi">
-        <p>"Organic traffic doubled in months; the roadmap and execution were on point."</p>
-        <div class="who">— Ash, Head of Growth</div>
+        <p>"Organic traffic doubled in months — the strategic approach was the difference."</p>
+        <div class="name">— Ash, Head of Growth</div>
       </div>
 
       <div class="testi">
-        <p>"Clear prioritization and measurable results. Highly recommended."</p>
-        <div class="who">— Priya, Founder</div>
+        <p>"Clear prioritization and measurable results. A very data-driven team."</p>
+        <div class="name">— Priya, Founder</div>
       </div>
 
       <div class="testi">
-        <p>"Fast wins and sustained improvements month over month."</p>
-        <div class="who">— Rahul, Marketing Lead</div>
+        <p>"Fast wins and steady improvements month after month. Highly recommend."</p>
+        <div class="name">— Rahul, Marketing Lead</div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="cta reveal" style="margin-top:36px;">
+    <section class="cta reveal" style="margin-top:36px">
       <div class="left">
         <h3>Ready to make your growth eternal?</h3>
-        <p>Book a 15-minute discovery call — we’ll outline immediate opportunities.</p>
+        <p>Book a 15-minute discovery call — we’ll show quick wins and an action plan.</p>
       </div>
       <div class="actions">
-        <button class="btn-primary" id="ctaSchedule">Schedule a Call</button>
-        <button class="btn-ghost" id="ctaPricing">See Pricing</button>
+        <button class="btn-outline" id="scheduleBtn">Schedule a Call</button>
+        <button class="btn-ghost" id="pricingBtn">See Pricing</button>
       </div>
     </section>
 
-    <footer style="margin:28px 0 72px; text-align:center; color:var(--muted);">
-      © <span id="year"></span> Be Eternal · All rights reserved
+    <footer style="margin:28px 0 72px; text-align:center; color:var(--muted)">
+      © <span id="year"></span> Be Eternal — All rights reserved
     </footer>
-
   </main>
 
-  <!-- =========================
-       JS: Interactions (triple-checked)
-       ========================= -->
+  <!-- Interactions (triple-checked) -->
   <script>
     (function(){
-      // DOM helpers
       const root = document.documentElement;
-      const brandToggle = document.getElementById('brandToggle');
-      const brandDefault = '#24377A';
-      const brandAlt = '#FFC857';
-      const brandLabel = {
-        [brandDefault]: 'Navy',
-        [brandAlt]: 'Gold'
-      };
+      const accentToggle = document.getElementById('accentToggle');
+      const BRAND = getComputedStyle(root).getPropertyValue('--brand').trim() || '#24377A';
+      const BRAND_ALT = getComputedStyle(root).getPropertyValue('--brand-alt').trim() || '#FFC857';
 
-      // Ensure initial variable exists
-      if(!getComputedStyle(root).getPropertyValue('--brand-color').trim()){
-        root.style.setProperty('--brand-color', brandDefault);
+      // Set initial accent CSS variable
+      if(!getComputedStyle(root).getPropertyValue('--accent').trim()){
+        root.style.setProperty('--accent', BRAND);
       }
 
-      // Toggle brand accent (Navy <-> Gold)
-      if(brandToggle){
-        brandToggle.addEventListener('click', () => {
-          const current = getComputedStyle(root).getPropertyValue('--brand-color').trim();
-          const next = (current.toLowerCase() === brandDefault.toLowerCase()) ? brandAlt : brandDefault;
-          root.style.setProperty('--brand-color', next);
-          brandToggle.textContent = 'Accent: ' + (brandLabel[next] || next);
-          brandToggle.setAttribute('aria-pressed', (next === brandAlt).toString());
+      // Accent toggle (Navy <-> Gold). Updates --accent used throughout css.
+      if(accentToggle){
+        accentToggle.addEventListener('click', () => {
+          const current = getComputedStyle(root).getPropertyValue('--accent').trim();
+          const next = (current.toLowerCase() === BRAND.toLowerCase()) ? BRAND_ALT : BRAND;
+          root.style.setProperty('--accent', next);
+          // also update a few derived vars dynamically (hover tint & focus ring)
+          root.style.setProperty('--hover-tint', next === BRAND ? 'rgba(36,55,122,0.06)' : 'rgba(255,200,87,0.06)');
+          root.style.setProperty('--focus-ring', next === BRAND ? 'rgba(36,55,122,0.14)' : 'rgba(255,200,87,0.14)');
+          accentToggle.textContent = 'Accent: ' + (next === BRAND ? 'Navy' : 'Gold');
+          accentToggle.setAttribute('aria-pressed', String(next === BRAND_ALT));
+          // update inline styles which used var(--accent) in a few places
+          // (no further action needed; CSS uses var(--accent) directly)
         });
       }
 
@@ -398,73 +388,72 @@
           const ul = document.querySelector('nav ul');
           if(!ul) return;
           ul.style.display = (ul.style.display === 'flex') ? 'none' : 'flex';
+          menuBtn.setAttribute('aria-expanded', ul.style.display === 'flex');
         });
       }
 
-      // Reveal on scroll (IntersectionObserver)
+      // IntersectionObserver for reveal animations
       const revealObserver = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-          if(e.isIntersecting){
-            e.target.classList.add('in-view');
-            obs.unobserve(e.target);
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
           }
         });
       }, { threshold: 0.14 });
-
       document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-      // Counters: animate once when visible
-      const animateNumber = (el, to, duration = 1200) => {
+      // Counters: animate when KPI row becomes visible
+      function animateNumber(el, to, duration = 1100){
         const start = 0;
         const startTs = performance.now();
         const ease = t => 1 - Math.pow(1 - t, 3);
-        const loop = (ts) => {
-          const p = Math.min((ts - startTs) / duration, 1);
-          el.textContent = Math.round(start + (to - start) * ease(p)).toLocaleString();
-          if(p < 1) requestAnimationFrame(loop);
+        const tick = (now) => {
+          const p = Math.min((now - startTs) / duration, 1);
+          const v = Math.round(start + (to - start) * ease(p));
+          el.textContent = v.toLocaleString();
+          if(p < 1) requestAnimationFrame(tick);
         };
-        requestAnimationFrame(loop);
-      };
+        requestAnimationFrame(tick);
+      }
 
-      const kpiContainer = document.querySelector('.kpi-row');
-      if(kpiContainer){
-        const kpiObs = new IntersectionObserver((entries, obs) => {
+      const kpiRow = document.querySelector('.kpi-row');
+      if(kpiRow){
+        const obs = new IntersectionObserver((entries, o) => {
           entries.forEach(entry => {
             if(entry.isIntersecting){
-              const nums = entry.target.querySelectorAll('.num');
-              nums.forEach(n => {
-                const target = parseFloat(n.dataset.target || '0');
-                animateNumber(n, target, 1200);
+              entry.target.querySelectorAll('.num').forEach(n => {
+                const t = parseFloat(n.dataset.target || '0');
+                animateNumber(n, t, 1200);
               });
-              obs.unobserve(entry.target);
+              o.unobserve(entry.target);
             }
           });
         }, { threshold: 0.5 });
-        kpiObs.observe(kpiContainer);
+        obs.observe(kpiRow);
       }
 
-      // Tilt effect for elements with .tilt
+      // Tilt effect (pointer-based) for elements with .tilt
       const tiltEls = Array.from(document.querySelectorAll('.tilt'));
       tiltEls.forEach(el => {
-        el.style.transformOrigin = 'center';
-        el.addEventListener('pointermove', e => {
-          const r = el.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width;
-          const py = (e.clientY - r.top) / r.height;
-          const rx = (py - 0.5) * -10; // tilt angle X
-          const ry = (px - 0.5) * 10;  // tilt angle Y
+        const strength = 12;
+        let rect = null;
+        el.addEventListener('pointermove', (ev) => {
+          rect = rect || el.getBoundingClientRect();
+          const px = (ev.clientX - rect.left) / rect.width - 0.5; // -0.5 .. 0.5
+          const py = (ev.clientY - rect.top) / rect.height - 0.5;
+          const rx = (-py * strength).toFixed(2);
+          const ry = (px * strength).toFixed(2);
           el.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
         });
-        el.addEventListener('pointerleave', () => {
-          el.style.transform = '';
-        });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; rect = null; });
       });
 
-      // Make dropdown accessible: basic keyboard open/close
+      // Make dropdown accessible (keyboard)
       document.querySelectorAll('.dropdown > a').forEach(link => {
-        link.addEventListener('keydown', (e) => {
-          if(e.key === 'Enter' || e.key === ' '){
-            e.preventDefault();
+        link.addEventListener('keydown', (ev) => {
+          if(ev.key === 'Enter' || ev.key === ' '){
+            ev.preventDefault();
             const menu = link.parentElement.querySelector('.dropdown-menu');
             if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
           }
@@ -472,19 +461,13 @@
       });
 
       // Footer year
-      const yearEl = document.getElementById('year');
-      if(yearEl) yearEl.textContent = new Date().getFullYear();
+      const y = document.getElementById('year');
+      if(y) y.textContent = new Date().getFullYear();
 
-      // Initial responsive nav state
-      function adaptNav(){
-        const ul = document.querySelector('nav ul');
-        if(!ul) return;
-        if(window.innerWidth <= 720) ul.style.display = 'none';
-        else ul.style.display = 'flex';
-      }
+      // Initial nav state responsive
+      function adaptNav(){ const ul = document.querySelector('nav ul'); if(!ul) return; ul.style.display = window.innerWidth <= 720 ? 'none' : 'flex'; }
       window.addEventListener('resize', adaptNav);
       adaptNav();
-
     })();
   </script>
 </body>
